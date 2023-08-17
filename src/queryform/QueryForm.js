@@ -74,7 +74,7 @@ function QueryForm() {
                   <input
                     // type="email"
                     {...register("email", {
-                      // required: true,
+                      required: true,
                       pattern: /.*@[a-z0-9.-]*/i,
                       maxLength: 48,
                     })}
@@ -93,6 +93,7 @@ function QueryForm() {
                   <input
                     type="tel"
                     {...register("phone_number", {
+                      required:true,
                       pattern: /^[0-9]+$/i,
                       minLength: 10,
                       maxLength: 10,
