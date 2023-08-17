@@ -30,8 +30,8 @@ const faqList = [
 function App() {
   return (
     <>
-      {/* <Accordion faqList={faqList} /> */}
-      {/* <Card /> */}
+      <Accordion faqList={faqList} />
+      <Card />
       <QueryForm />
     </>
   );
