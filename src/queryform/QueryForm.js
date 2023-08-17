@@ -1,7 +1,17 @@
 import React from "react";
 import classes from "./QueryForm.module.css";
+import { useForm } from "react-hook-form";
 
 function QueryForm() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <div className={classes.main_container}>
@@ -15,27 +25,43 @@ function QueryForm() {
           </div>
         </div>
         <div className={classes.right_container}>
-          <form action="">
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
             <div className={classes.form_container}>
               <div className={classes.name_input}>
                 <div className={classes.first_name}>
                   <label className={classes.label_text} htmlFor="first_name">
                     First Name
+                    <span className={classes.form_span}>*</span>
                   </label>
                   <input
                     type="text"
+                    {...register("fname", {
+                      required: true,
+                      pattern: /^[a-zA-Z]+$/i,
+                      minLength: 3,
+                      maxLength: 48,
+                    })}
                     id="first_name"
                     placeholder="Enter your first name"
-                    className={classes.form_input}
+                    className={`form-control ${classes.form_input} ${
+                      errors.fname && classes.error_content
+                    }`}
                   />
                 </div>
                 <div className={classes.last_name}>
                   <label htmlFor="last_name">Last Name</label>
                   <input
                     type="text"
+                    {...register("lname", {
+                      pattern: /^[a-zA-Z]+$/i,
+                      minLength: 3,
+                      maxLength: 48,
+                    })}
                     id="last_name"
                     placeholder="Enter your last name"
-                    className={classes.form_input}
+                    className={`form-control ${classes.form_input} ${
+                      errors.lname && classes.error_content
+                    }`}
                   />
                 </div>
               </div>
@@ -43,21 +69,40 @@ function QueryForm() {
                 <div className={classes.email}>
                   <label className={classes.label_text} htmlFor="email">
                     Email
+                    <span className={classes.form_span}>*</span>
                   </label>
                   <input
-                    type="email"
+                    // type="email"
+                    {...register("email", {
+                      required: true,
+                      pattern: /.*@[a-z0-9.-]*/i,
+                      maxLength: 48,
+                    })}
                     id="email"
                     placeholder="Enter your email"
-                    className={classes.form_input}
+                    className={`form-control ${classes.form_input} ${
+                      errors.email && classes.error_content
+                    }`}
                   />
                 </div>
                 <div className={classes.phone_number}>
-                  <label htmlFor="number">Phone Number</label>
+                  <label htmlFor="number">
+                    Phone Number
+                    <span className={classes.form_span}>*</span>
+                  </label>
                   <input
-                    type="number"
+                    type="tel"
+                    {...register("phone_number", {
+                      required:true,
+                      pattern: /^[0-9]+$/i,
+                      minLength: 10,
+                      maxLength: 10,
+                    })}
                     id="number"
-                    placeholder="+919876543210"
-                    className={classes.form_input}
+                    placeholder="9876543210"
+                    className={`form-control ${classes.form_input} ${
+                      errors.phone_number && classes.error_content
+                    }`}
                   />
                 </div>
               </div>
@@ -67,6 +112,7 @@ function QueryForm() {
                 </label>
                 <textarea
                   type="text"
+                  {...register("query")}
                   id="query"
                   placeholder="Enter your message"
                   className={classes.query_textarea}
@@ -74,7 +120,9 @@ function QueryForm() {
               </div>
             </div>
             <div className={classes.submit_btn}>
-              <button className={classes.btn}>Submit</button>
+              <button className={classes.btn} type="submit">
+                Submit
+              </button>
               {/* <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

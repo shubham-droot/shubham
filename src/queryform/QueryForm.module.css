@@ -84,7 +84,7 @@
   margin: 0;
   display: flex;
   justify-content: space-around;
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 .email {
@@ -100,7 +100,7 @@
 .query_container {
   margin: 0;
   padding: 0;
-  margin-top: 28px;
+  margin-top: 20px;
   padding-left: 20px;
 }
 
@@ -148,9 +148,13 @@
   line-height: normal;
 }
 
+.form_span {
+  color: red;
+}
+
 .form_input {
   display: flex;
-  margin-top: 16px;
+  margin-top: 10px;
   width: 390px;
   /* height: 24px; */
   padding: 16px 10px;
@@ -172,6 +176,10 @@
   resize: none;
   outline: none;
   border: 0.8px solid #808080;
+}
+
+.error_content{
+  border: 1px solid red;
 }
 
 @media screen and (max-width: 1200px) {
