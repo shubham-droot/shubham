@@ -4,6 +4,7 @@ import Accordion from "./accordion/Accordion";
 import Card from "./card/Card";
 import QueryForm from "./queryform/QueryForm";
 import Carousel from "./corousel/Carousel";
+import Recipe from "./recipe/Recipe";
 
 const faqList = [
   {
@@ -34,7 +35,8 @@ function App() {
       {/* <Accordion faqList={faqList} /> */}
       {/* <Card /> */}
       {/* <QueryForm /> */}
-      <Carousel />
+      {/* <Carousel /> */}
+      <Recipe />
     </>
   );
 }
