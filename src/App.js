@@ -3,6 +3,7 @@ import "./App.css";
 import Accordion from "./accordion/Accordion";
 import Card from "./card/Card";
 import QueryForm from "./queryform/QueryForm";
+import Carousel from "./corousel/Carousel";
 
 const faqList = [
   {
@@ -30,9 +31,10 @@ const faqList = [
 function App() {
   return (
     <>
-      <Accordion faqList={faqList} />
-      <Card />
-      <QueryForm />
+      {/* <Accordion faqList={faqList} /> */}
+      {/* <Card /> */}
+      {/* <QueryForm /> */}
+      <Carousel />
     </>
   );
 }
